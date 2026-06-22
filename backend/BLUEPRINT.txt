@@ -1,0 +1,14 @@
+ENDPOINTS TO BUILD:
+
+POST   /habits          → create a habit        //done
+GET    /habits          → get all habits        //done
+GET    /habits/:id      → get single habit      //done
+PUT    /habits/:id      → update habit          //done
+DELETE /habits/:id      → delete habit          //done
+
+POST   /habits/:id/log  → log completion for today  //done
+GET    /habits/:id/logs → get all logs for a habit  //done
+GET    /habits/:id/streak → get current streak      //done
+
+Authentication //done
+Authorisation //pending
