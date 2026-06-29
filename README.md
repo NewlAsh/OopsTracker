@@ -4,7 +4,7 @@
 
 A habit tracker that doesn't lecture you. No fire emojis, no streaks that "shatter", no dopamine manipulation. You either did the thing or you didn't.
 
-**Live:** [oopstracker.netlify.app](https://oopstracker.netlify.app)
+**Live:** [oopstracker.netlify.app](oops-tracker-two.vercel.app)
 
 ---
 
