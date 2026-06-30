@@ -1,6 +1,5 @@
 //index.js
 require('dotenv').config();
-console.log("MONGO_URI from env:", process.env.MONGO_URI);
 const express = require('express');
 const {connectToMongoDB} = require('./connect');
 const cors = require('cors');
@@ -29,7 +28,7 @@ const authRouter = require("./router/auth");
 const habitLogRouter = require("./router/habitLog");
 const { limiter, authLimiter } = require('./middleware/rateLimiter');
 
-connectToMongoDB(process.env.MONGODB_URI).then(() => console.log("DB connected")).catch((err) => console.error(`failed due to ${err}`));
+connectToMongoDB(process.env.MONGO_URI).then(() => console.log("DB connected")).catch((err) => console.error(`failed due to ${err}`));
 app.use("/habits", limiter, router);
 app.use("/auth", limiter, authRouter);
 app.use("/habits", limiter, habitLogRouter);
