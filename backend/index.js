@@ -14,7 +14,7 @@ app.use(cors({
   origin: allowedOrigins,
   credentials: true
 }));
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8000;
 const router = require("./router/habits");
 const authRouter = require("./router/auth");
 const habitLogRouter = require("./router/habitLog");
