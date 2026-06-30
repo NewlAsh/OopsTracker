@@ -5,16 +5,24 @@ const {connectToMongoDB} = require('./connect');
 const cors = require('cors');
 const app = express();
 app.use(express.json());
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://oops-tracker-8cia.vercel.app"
-];
 
+const allowedOrigins = [
+    "http://localhost:5500",
+    "http://127.0.0.1:5500",
+    "http://localhost:3000",
+    process.env.FRONTEND_URL, 
+].filter(Boolean);
+ 
 app.use(cors({
-  origin: allowedOrigins,
-  credentials: true
+    origin: function (origin, callback) {
+        // allow requests with no origin (mobile apps, curl, Postman)
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.includes(origin)) return callback(null, true);
+        return callback(new Error(`CORS blocked: ${origin}`));
+    },
+    credentials: true,
 }));
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT;
 const router = require("./router/habits");
 const authRouter = require("./router/auth");
 const habitLogRouter = require("./router/habitLog");
