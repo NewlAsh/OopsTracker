@@ -5,8 +5,16 @@ const {connectToMongoDB} = require('./connect');
 const cors = require('cors');
 const app = express();
 app.use(express.json());
-app.use(cors());
-const PORT = 8000;
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://oops-tracker-8cia.vercel.app"
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}));
+const PORT = process.env.PORT;
 const router = require("./router/habits");
 const authRouter = require("./router/auth");
 const habitLogRouter = require("./router/habitLog");
